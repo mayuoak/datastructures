@@ -27,10 +27,10 @@ class Linkedlist(object):
             return 'Empty list'
         else:
             current_node = self.head
-            l.append(str(current_node.get_value()))
-            while current_node.next_node:
-                current_node = current_node.next_node
+            while current_node.get_next():
                 l.append(str(current_node.get_value()))
+                current_node = current_node.get_next()
+            l.append(str(current_node.get_value()))
             #import pdb; pdb.set_trace()
             return " ".join(l)
 
@@ -51,6 +51,17 @@ class Linkedlist(object):
             current_node = current_node.get_next()
             index -= 1
         current_node.set_next(current_node.get_next().get_next())
+
+    def reverse(self):
+        current_node = self.head
+        prev = Node()
+        while current_node:
+            next_node = current_node.get_next()
+            current_node.set_next(prev)
+            prev = current_node
+            current_node = next_node
+        self.head = prev
+        return self
 
     def search(self,data):
         if self.head == None:
@@ -99,3 +110,4 @@ l_list.delete(2)
 print(l_list)
 print("size of the linkedlist: {}".format(l_list.size()))
 print("element search result: {}".format(l_list.search(1000)))
+print(l_list.reverse())
