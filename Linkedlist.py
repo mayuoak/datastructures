@@ -45,6 +45,13 @@ class Linkedlist(object):
                 current_node = current_node.get_next()
             current_node.set_next(new_node)
 
+    def delete(self,index):
+        current_node = self.head
+        while index > 1:
+            current_node = current_node.get_next()
+            index -= 1
+        current_node.set_next(current_node.get_next().get_next())
+
     def search(self,data):
         if self.head == None:
             return None;
@@ -64,7 +71,7 @@ class Linkedlist(object):
     def insert(self,index,data):
         new_node = Node(data)
         current_node = self.head
-        while current_node.get_next() and index > 0:
+        while current_node.get_next() and index > 1:
             current_node = current_node.get_next()
             index -= 1
         new_node.set_next(current_node.get_next())
@@ -87,6 +94,8 @@ l_list = Linkedlist()
 for i in range(100):
     l_list.add(i)
 l_list.insert(2,1000)
+print(l_list)
+l_list.delete(2)
 print(l_list)
 print("size of the linkedlist: {}".format(l_list.size()))
 print("element search result: {}".format(l_list.search(1000)))
