@@ -100,14 +100,17 @@ class Linkedlist(object):
                 current_node = current_node.get_next()
             return index
 
+def main():
+    l_list = Linkedlist()
+    for i in range(100):
+        l_list.add(i)
+        l_list.insert(2,1000)
+        print(l_list)
+        l_list.delete(2)
+        print(l_list)
+        print("size of the linkedlist: {}".format(l_list.size()))
+        print("element search result: {}".format(l_list.search(1000)))
+        print(l_list.reverse())
 
-l_list = Linkedlist()
-for i in range(100):
-    l_list.add(i)
-l_list.insert(2,1000)
-print(l_list)
-l_list.delete(2)
-print(l_list)
-print("size of the linkedlist: {}".format(l_list.size()))
-print("element search result: {}".format(l_list.search(1000)))
-print(l_list.reverse())
+if __name__=="main":
+	main()
